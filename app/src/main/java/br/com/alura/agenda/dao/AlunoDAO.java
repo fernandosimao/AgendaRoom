@@ -1,5 +1,6 @@
 package br.com.alura.agenda.dao;
 
+import android.arch.persistence.room.Entity;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
