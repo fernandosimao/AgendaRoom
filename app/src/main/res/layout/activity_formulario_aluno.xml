@@ -19,6 +19,7 @@
             android:importantForAutofill="no"
             tools:targetApi="o" />
 
+
         <EditText
             android:id="@+id/activity_formulario_aluno_telefone"
             android:layout_width="match_parent"
