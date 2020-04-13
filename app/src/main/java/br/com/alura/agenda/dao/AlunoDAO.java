@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.alura.agenda.model.Aluno;
-
+//essa classe não está em uso. Funcionava quando usávamos uma lista como DAO (que não persistia os dados, resolvido após
+// a implementação do Room como DAO)
 public class AlunoDAO {//test githubbrwh drfhdfghd fg
 
     private final static List<Aluno> alunos = new ArrayList<>();

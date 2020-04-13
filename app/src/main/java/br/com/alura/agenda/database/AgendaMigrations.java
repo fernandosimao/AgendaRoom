@@ -5,17 +5,18 @@ import android.arch.persistence.room.migration.Migration;
 import android.support.annotation.NonNull;
 
 class AgendaMigrations {
-    private static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+    private static final Migration MIGRATION_1_2 = new Migration(1, 2) { //incluindo a coluna sobrenome
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
             database.execSQL("ALTER TABLE Aluno ADD COLUMN sobrenome TEXT");
 
         }
     };
-    private static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+    private static final Migration MIGRATION_2_3 = new Migration(2, 3) { //apagando a coluna sobrenome
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
-            //QUANDO FOR NECESSÁRIO ALTERAR UM TIPO DE CLUNA OU REMOVELA, O SQLITE TEM ALGUMAS LIMITAÇÕES - POR EXEMPLO NÃO TEM O DROP COLUMN ( database.execSQL("ALTER TABLE aluno DROP COLUMN sobrenome");) SENDO NECESSÁRIO A TÉCNICA ABAIXO
+            //QUANDO FOR NECESSÁRIO ALTERAR UM TIPO DE COLUNA OU REMOVE-LA, O SQLITE TEM ALGUMAS LIMITAÇÕES - POR EXEMPLO NÃO TEM
+            // O DROP COLUMN ( database.execSQL("ALTER TABLE aluno DROP COLUMN sobrenome");) SENDO NECESSÁRIA A TÉCNICA ABAIXO
 
             //Criar nova tabela com as informações desejadas
             database.execSQL("CREATE TABLE IF NOT EXISTS `Aluno_novo`" +
