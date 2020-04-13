@@ -14,6 +14,24 @@ import br.com.alura.agenda.model.Aluno;
 
 import static br.com.alura.agenda.ui.activity.ConstantesActivities.CHAVE_ALUNO;
 
+/*
+Resumo 13/04/2020: O formulário é aberto ao se clicar no botão + ou ao se clicar em um item da agenda ambos na ListaAlunos Activity.
+Inicialmente setamos o layout (setContentView), criamos uma instância do banco de dados (AgendaDatabase.getInstance) e do DAO
+ (database.getRoomAlunoDAO();). Após, fazemos a vinculação dos campos do FormularioActivity com as variáveis EditTexts
+  correspondentes (inicializacaoDosCampos()). Finalmente carregamos o Aluno (carregaAluno()): se houver um extra, siginifica
+  que um item foi clicado para edição e um aluno foi recebido, então setamos o título da APP_BAR para edição (setTitle) e
+  preenchemos os nomes (preencheCampos();) com os atributos do aluno recebido. Se não houver um extra, então setamos o título
+  da APP_BAR para inserção (outro setTitle) e então um aluno é criado vazio (aluno = new Aluno();). A partir desse momento
+  aguardamos que o usuário clique no botão salvar (onCreateOptionsMenu). Após a seleção (onOptionsItemSelected) finalizamos
+  o formulário (finalizaFormulario();). Inicialmente preenchemos os alunos com os dados digitados ou carregados dos
+  EditTexts e setamos um objeto aluno com esses atributos( preencheAluno();). Ainda em finalizaFormulario(), se o aluno
+  tem um id válido (> 0) fazemos o update do aluno no banco  (dao.edita(aluno)), caso não seja válido (id = 0) fazemos
+  a inserção do aluno no banco (dao.salva(aluno);). Na criação de um aluno ele recebe um id = 0, então na primeira vez
+  que ele é preenchido significa que precisamos fazer uma inserção no banco. Como o id é incrementado automaticamente no DAO,
+  alunos existentes sempre terão id > 0, o que significa que ao finalizar o formulários eles serão atualizados (update)
+*/
+
+
 public class FormularioAlunoActivity extends AppCompatActivity {
 
     private static final String TITULO_APPBAR_NOVO_ALUNO = "Novo aluno";

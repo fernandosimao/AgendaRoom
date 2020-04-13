@@ -43,7 +43,7 @@ public class Aluno implements Serializable {
 //        this.sobrenome = sobrenome;
 //    }
 
-    //foram necessários ser criados os geters e seters para momentoCadastro para que o Room possa colocar esses dados
+    // ^ foram necessários ser criados os geters e seters para momentoCadastro para que o Room possa colocar esses dados
     // no banco após a migration. No caso específico foi preciso criar a classe ConversorCalendar, já que o tipo Calendar
     // não é supoirtado no SQLITE
     public Calendar getMomentoDeCadastro() {
