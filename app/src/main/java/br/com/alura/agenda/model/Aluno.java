@@ -9,6 +9,15 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/*
+Resumo 14/04/2020
+Para implementação do Room, devemos ter um banco (AgendaDAtabase.java, uma entidade (Aluno.java) e um DAO (Interface AlunoDAO)). Nessa classe
+definimos quem é a entidade a ser salva no banco através do marcador @Entity. Também precisamos indicar a chave primária @PrimaryKey. Usamos
+o marcador @Ignore quando há varios contrutores e não queremos que o Room o utilize. O mesmo marcador serve para os atributos: atributos com o
+@Ignore não são persistidos no banco de dados. É necessário implementar os getters e setters dos atributos para que o Room consiga ligar com
+eles e adicioná-los ao banco.
+ */
+
 @Entity
 public class Aluno implements Serializable {
 

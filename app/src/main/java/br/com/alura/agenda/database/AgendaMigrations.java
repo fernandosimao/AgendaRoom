@@ -4,6 +4,18 @@ import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.migration.Migration;
 import android.support.annotation.NonNull;
 
+/*
+Resumo 14/04/2020:
+Usamos essa classe para listar todos os migrations que originalmente estavam dentro de  Room.databaseBuilder no método getInstance() de
+AgendaDatabase.java. Como os migrations (inclusão de coluna, alteração de tipo de coluna etc por exemplo) tendem a crescer com o tempo,
+optamos por separá-las em uma nova classe por organização. Cada migration indica as alterações que estão sendo feitas no banco nesse atualização.
+É preciso também informar em AgendaDatabase.java no marcador @Database a atualização da versão, assim na primeira atualização migration (1, 2)
+o atributo version do marcador @Database deve ser atualizado para 2 e assim sucessivamente. Na migração abaixo (2 ,3) destacamos que o SQLITE
+não suporta a exclusão de coluna ou alteração do seu tipo, como é possível em outros bancos. Nesse caso foi preciso criar uma nova tabela,
+copiar os dados que interessavam da antiga para a nova, apagar a antiga e renomear a nova para o nome da antiga (tudo documentado abaixo).
+Foram feitas aqui também algumas extrações para facilitação da leitura.
+ */
+
 class AgendaMigrations {
     private static final Migration MIGRATION_1_2 = new Migration(1, 2) { //incluindo a coluna sobrenome
         @Override

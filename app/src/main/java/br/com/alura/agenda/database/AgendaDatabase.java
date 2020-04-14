@@ -12,6 +12,23 @@ import br.com.alura.agenda.model.Aluno;
 
 import static br.com.alura.agenda.database.AgendaMigrations.TODAS_MIGRATIONS;
 
+/*
+Resumo 14/04/2020:
+Para implementação do Room, devemos ter um banco (AgendaDAtabase.java, uma entidade (Aluno.java) e um DAO (Interface AlunoDAO))
+Essa classe é onde definmos o banco de dados SQLITE que será gerenciado pelo Room. Precisamos usar o marcador @Database pra indicar quais
+serão as entidades (tabelas) e sempre atualizar o version após qualquer migration (atualização das tabelas). Nessa classe também indicamos
+através do marcador @TypeConverters qual a classe que fará a conversão para da aplicação para o  banco e do banco para a aplicação
+dos atributos que não são suportados nativamente pelo SQLITE (no nosso caso o atributo private Calendar momentoDeCadastro). Nessa classe
+fazemos a implementação de dois métodos: o abstract AlunoDAO getRoomAlunoDAO que, sendo abstrato e do tipo do DAO, indicará que o Room deve
+fazer a implementação da classe AlunoDAO (métodos insert, delete, update etc); o método getInstance, onde criamos uma instância do banco de
+dados, assim cada classe que precisar entrar em contato com o banco, basta apenas chamar o método getInstance(), sem ter que implementar todas
+essas linhas de código em diferente partes do APP, com o risco de errar. O Room tem alguns métodos: o databaseBuilder que constrói o banco,
+o allowMainThreadQueries() que permite que as consultas rodem na mesma thread principal (não recomendado), o fallbackToDestructiveMigration()
+que destrói e recria o banco inteiro (bom para mudanças nas tabelas quando a aplicação ainda não está em produção) e o addMigrations() que
+faz as mudanças no banco (inclusão de coluna, alteração de tipo de coluna etc) sem apagar os dados que anteriormente foram incluídos (ideal
+para o caso da aplicação já estar em produção)
+ */
+
 @Database(entities = {Aluno.class}, version = 4, exportSchema = false)
 //é necessário atualizar a versão após modificação no banco (inclusão de coluna por ex)
 //exportSchema = false dessa maneira não é gerado o arquivo com o esquema de banco de dados
