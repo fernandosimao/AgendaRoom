@@ -11,6 +11,15 @@ import br.com.alura.agenda.database.dao.AlunoDAO;
 import br.com.alura.agenda.model.Aluno;
 import br.com.alura.agenda.ui.adapter.ListaAlunosAdapter;
 
+/*
+Resumo 14/04/2020: (pode melhorar a descição abaixo)
+O ListaAlunosView faz o meio de campo entre ListaALunosAcivity e o adapter / DAO. Essa classe faz a configuração do Adapter
+ (public void configuraAdapter(ListView listaDeAlunos)) recebendo um objeto do tipo ListView e chamando um de deus métodos, o setAdapter.
+ Um objeto dessa classe também consegue atualizar o adapter pegando todos os objetos salvos no banco (adapter.atualiza(dao.todos());).
+ Também consegue remover alunos tanto do adapter quanto do DAO ao mesmo tempo (private void remove(Aluno aluno)). Finalmente é aqui
+ que configuramos o AlertDialog, aquela mensagem que nos alerta através de um popup se desejamos confirmar determinada ação (no nosso
+ caso a exclusão de um aluno)
+ */
 public class ListaAlunosView {
 
     private final ListaAlunosAdapter adapter;

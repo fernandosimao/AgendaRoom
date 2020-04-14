@@ -15,8 +15,9 @@ import br.com.alura.agenda.model.Aluno;
 import static br.com.alura.agenda.ui.activity.ConstantesActivities.CHAVE_ALUNO;
 
 /*
-Resumo 13/04/2020: O formulário é aberto ao se clicar no botão + ou ao se clicar em um item da agenda ambos na ListaAlunos Activity.
-Inicialmente setamos o layout (setContentView), criamos uma instância do banco de dados (AgendaDatabase.getInstance) e do DAO
+Resumo 13/04/2020:
+ O formulário é aberto ao se clicar no botão + ou ao se clicar em um item da agenda ambos na ListaAlunos Activity.
+ Inicialmente setamos o layout (setContentView), criamos uma instância do banco de dados (AgendaDatabase.getInstance) e do DAO
  (database.getRoomAlunoDAO();). Após, fazemos a vinculação dos campos do FormularioActivity com as variáveis EditTexts
   correspondentes (inicializacaoDosCampos()). Finalmente carregamos o Aluno (carregaAluno()): se houver um extra, siginifica
   que um item foi clicado para edição e um aluno foi recebido, então setamos o título da APP_BAR para edição (setTitle) e
